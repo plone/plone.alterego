@@ -21,7 +21,7 @@ class DynamicModule(module):
             __name__ = module.__getattribute__(self, '__name__')
             factory = queryUtility(IDynamicObjectFactory, name=__name__)
             if factory is None:
-                raise e
+                raise AttributeError("Cannot find dynamic object factory for module %s" % __name__)
             
             obj = factory(name, self)
             if obj is None:
@@ -31,11 +31,9 @@ class DynamicModule(module):
             __dict__[name] = obj
             return obj
             
-def create(parent_module, name):
-    full_name = '%s.%s' % (parent_module.__name__, name)
-    dynamic = DynamicModule(full_name)
-    sys.modules[full_name] = dynamic
-    setattr(parent_module, name, dynamic)
+def create(dotted_name):
+    dynamic = DynamicModule(dotted_name)
+    sys.modules[dotted_name] = dynamic
     return dynamic
     
 __all__ = ('create',)

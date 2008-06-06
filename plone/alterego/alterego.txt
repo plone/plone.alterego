@@ -43,8 +43,21 @@ helper method to make this easier. It takes a parent module and a name as
 arguments:
 
     >>> from plone.alterego.dynamic import create
+    >>> dynamic = create('plone.alterego.tests.dynamic')
+
+Since we are not calling create() from the module where we are pretending
+the dynamic module exists ('plone.alterego.tests' in this case), we need to
+explicitly set it. Normally, the two lines above will suffice, so long as the
+name of the parent module and the dynamic module match in the string and in
+real code.
+
     >>> import plone.alterego.tests
-    >>> dynamic_module = create(plone.alterego.tests, 'dynamic')
+    >>> setattr(plone.alterego.tests, 'dynamic', dynamic)
+
+Keep track of the return value for a moment so we can test it.
+
+    >>> dynamic_module = dynamic
+    >>> del dynamic
 
 We can now import this module:
 
@@ -52,12 +65,13 @@ We can now import this module:
     >>> dynamic is dynamic_module
     True
 
-The module doesn't have any items yet:
+However, until we have defined the utility that knows how to construct 
+objects, we will get an error.
 
     >>> dynamic.IOne # doctest: +ELLIPSIS
     Traceback (most recent call last):
     ...
-    AttributeError: 'DynamicModule' object has no attribute 'IOne'
+    AttributeError: Cannot find dynamic object factory for module plone.alterego.tests.dynamic
 
 To make objects on demand, we'll need to register a utility that can act
 as a factory. This utility should have a name that corresponds to the full,
