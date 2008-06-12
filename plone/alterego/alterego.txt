@@ -85,7 +85,9 @@ for different dynamic modules.
     ...     
     ...     def __call__(self, name, module):
     ...         print "Creating", name, "in", module.__name__
-    ...         return InterfaceClass(name, (interface.Interface,), __module__=module.__name__)
+    ...         schema = InterfaceClass(name, (interface.Interface,), __module__=module.__name__)
+    ...         setattr(module, name, schema)
+    ...         return schema
 
     >>> from zope.component import provideUtility
     >>> provideUtility(InterfaceOnDemand(), name='plone.alterego.tests.dynamic')
@@ -94,7 +96,8 @@ for different dynamic modules.
     Creating IOne in plone.alterego.tests.dynamic
     <InterfaceClass plone.alterego.tests.dynamic.IOne>
 
-Note that the factory is created once for each name only:
+Note that the factory is created once for each name only, because it sets
+the schema back on the module as an attribute.
 
     >>> dynamic.IOne
     <InterfaceClass plone.alterego.tests.dynamic.IOne>
