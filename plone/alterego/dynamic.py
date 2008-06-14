@@ -24,7 +24,7 @@ class DynamicModule(module):
         
         obj = factory(name, self)
         if obj is None:
-            raise e
+            raise AttributeError("Dynamic module factory did not want to create %s in %s" % (name, self.__name__))
 
         return obj
             
