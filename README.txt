@@ -83,3 +83,4 @@ the factory will be used:
 Note that so long as the setattr() call above is executed, the factory is
 called only once. That is, you'll always get the same object each time you
 access a given attribute of the dynamic module.
+
