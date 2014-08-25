@@ -13,12 +13,12 @@ Usage
 To use this package, you should:
 
  - Identify an appropriate parent module where the dynamic module will live.
-  
+
  - Ensure that plone.alterego.dynamic.create() is called with this module and
-   a dynamic module name. Typically, you'd do this in the parent module 
+   a dynamic module name. Typically, you'd do this in the parent module
    itself, so that the dynamic module is instantiated as soon as the parent
    module is imported.
-   
+
  - Register a named utility providing IDynamicObjectFactory. The name should
    be the same as the full dotted path to the dynamic module. This utility
    will be responsible for creating the objects that inhabit the dynamic
@@ -27,7 +27,7 @@ To use this package, you should:
 Dynamic interfaces
 ------------------
 
-As an example of using plone.alterego, let's say we have a generic content 
+As an example of using plone.alterego, let's say we have a generic content
 class that should get a unique interface for each instance.
 
     >>> from zope import interface
@@ -65,7 +65,7 @@ We can now import this module:
     >>> dynamic is dynamic_module
     True
 
-However, until we have defined the utility that knows how to construct 
+However, until we have defined the utility that knows how to construct
 objects, we will get an error.
 
     >>> dynamic.IOne # doctest: +ELLIPSIS
@@ -82,7 +82,7 @@ for different dynamic modules.
     >>> from zope.interface.interface import InterfaceClass
     >>> class InterfaceOnDemand(object):
     ...     interface.implements(IDynamicObjectFactory)
-    ...     
+    ...
     ...     def __call__(self, name, module):
     ...         print "Creating", name, "in", module.__name__
     ...         schema = InterfaceClass(name, (interface.Interface,), __module__=module.__name__)
@@ -108,7 +108,7 @@ We could then create an on-demand interface easily:
     Creating ITwo in plone.alterego.tests.dynamic
 
     >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE
-    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>, 
+    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
      <InterfaceClass __builtin__.IContent>,
      <InterfaceClass zope.interface.Interface>]
 
@@ -119,6 +119,6 @@ objects will be returned each time the module is accessed.
     >>> del dynamic_module
 
     >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE
-    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>, 
+    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
      <InterfaceClass __builtin__.IContent>,
      <InterfaceClass zope.interface.Interface>]

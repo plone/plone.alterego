@@ -13,12 +13,12 @@ Usage
 To use this package, you should:
 
  - Identify an appropriate parent module where the dynamic module will live.
-  
+
  - Ensure that plone.alterego.dynamic.create() is called with this module and
-   a dynamic module name. Typically, you'd do this in the parent module 
+   a dynamic module name. Typically, you'd do this in the parent module
    itself, so that the dynamic module is instantiated as soon as the parent
    module is imported.
-   
+
  - Register a named utility providing IDynamicObjectFactory. The name should
    be the same as the full dotted path to the dynamic module. This utility
    will be responsible for creating the objects that inhabit the dynamic
@@ -58,7 +58,7 @@ as a factory.
     >>> from zope.interface.interface import InterfaceClass
     >>> class InterfaceOnDemand(object):
     ...     interface.implements(IDynamicObjectFactory)
-    ...     
+    ...
     ...     def __call__(self, name, module):
     ...         schema = InterfaceClass(name, (interface.Interface,), __module__=module.__name__)
     ...         setattr(module, name, schema)
@@ -79,7 +79,7 @@ the factory will be used:
 
     >>> dynamic.IOne
     <InterfaceClass plone.alterego.tests.dynamic.IOne>
-    
+
 Note that so long as the setattr() call above is executed, the factory is
 called only once. That is, you'll always get the same object each time you
 access a given attribute of the dynamic module.
