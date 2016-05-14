@@ -31,7 +31,12 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.component',
+        'zope.interface',
     ],
+    extras_require={
+        'test': []
+    },
     entry_points="""
     # -*- Entry points: -*-
     """,
