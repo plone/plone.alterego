@@ -33,8 +33,9 @@ class that should get a unique interface for each instance.
     >>> from zope import interface
     >>> class IContent(interface.Interface):
     ...     pass
-    >>> class Content(object):
-    ...     interface.implements(IContent)
+    >>> @interface.implementer(IContent)
+    ... class Content(object):
+    ...     pass
 
     >>> c1 = Content()
 
@@ -80,11 +81,11 @@ for different dynamic modules.
 
     >>> from plone.alterego.interfaces import IDynamicObjectFactory
     >>> from zope.interface.interface import InterfaceClass
-    >>> class InterfaceOnDemand(object):
-    ...     interface.implements(IDynamicObjectFactory)
+    >>> @interface.implementer(IDynamicObjectFactory)
+    ... class InterfaceOnDemand(object):
     ...
     ...     def __call__(self, name, module):
-    ...         print "Creating", name, "in", module.__name__
+    ...         print("Creating %s in %s" % (name, module.__name__))
     ...         schema = InterfaceClass(name, (interface.Interface,), __module__=module.__name__)
     ...         setattr(module, name, schema)
     ...         return schema
@@ -107,9 +108,14 @@ We could then create an on-demand interface easily:
     >>> interface.alsoProvides(c1, dynamic.ITwo)
     Creating ITwo in plone.alterego.tests.dynamic
 
-    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE
+    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_3
     [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
      <InterfaceClass __builtin__.IContent>,
+     <InterfaceClass zope.interface.Interface>]
+
+    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_2
+    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
+     <InterfaceClass builtins.IContent>,
      <InterfaceClass zope.interface.Interface>]
 
 Crucially, so long as the factory always returns the same thing, the same
@@ -118,7 +124,12 @@ objects will be returned each time the module is accessed.
     >>> del dynamic
     >>> del dynamic_module
 
-    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE
+    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_3
     [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
      <InterfaceClass __builtin__.IContent>,
+     <InterfaceClass zope.interface.Interface>]
+
+    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_2
+    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
+     <InterfaceClass builtins.IContent>,
      <InterfaceClass zope.interface.Interface>]
