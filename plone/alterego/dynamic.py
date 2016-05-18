@@ -1,17 +1,17 @@
 import sys
-from new import module
+from types import ModuleType
 
-from zope.interface import implements
+from zope.interface import implementer
 from zope.component import queryUtility
 
 from plone.alterego.interfaces import IDynamicModule
 from plone.alterego.interfaces import IDynamicObjectFactory
 
-class DynamicModule(module):
+
+@implementer(IDynamicModule)
+class DynamicModule(ModuleType):
     """A module that can create objects on the fly.
     """
-
-    implements(IDynamicModule)
 
     def __getattr__(self, name):
 
