@@ -1,20 +1,23 @@
 Changelog
 =========
 
-1.0.1 - unreleased
+1.0.1 (unreleased)
 ------------------
+
+Fixes:
 
 - Use zope.interface decorator.
   [gforcada]
 
-1.0 - 2011-04-30
+
+1.0 (2011-04-30)
 ----------------
 
-* Use doctest from the stdlib instead of from zope.testing
+- Use doctest from the stdlib instead of from zope.testing
   [davisagli]
 
-1.0a1 - 2009-04-17
+
+1.0a1 (2009-04-17)
 ------------------
 
-* Initial release
-
+- Initial release.
