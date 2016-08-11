@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import os
 
 version = '1.0.1'
 
@@ -7,8 +6,8 @@ setup(
     name='plone.alterego',
     version=version,
     description="Low level support for dynamic modules",
-    long_description=(open("README.txt").read() + "\n" +
-                      open(os.path.join("docs", "HISTORY.txt")).read()),
+    long_description=(open("README.rst").read() + "\n" +
+                      open("CHANGES.rst").read()),
     # Get more strings from
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[

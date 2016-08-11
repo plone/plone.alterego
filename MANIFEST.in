@@ -1,5 +1,4 @@
 include *.rst
-include *.txt
 
 graft docs
 graft plone
