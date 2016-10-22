@@ -1,7 +1,6 @@
 import doctest
-import unittest
 import sys
-
+import unittest
 import zope.component.testing
 
 SKIP_PYTHON_2 = doctest.register_optionflag('SKIP_PYTHON_2')
@@ -21,10 +20,9 @@ class PolyglotOutputChecker(doctest.OutputChecker):
 
 def test_suite():
     return unittest.TestSuite((
-
-        doctest.DocFileSuite('alterego.txt',
-             # setUp=setUp,
-             tearDown=zope.component.testing.tearDown,
-             checker=PolyglotOutputChecker())
-
-        ))
+        doctest.DocFileSuite(
+            'alterego.txt',
+            tearDown=zope.component.testing.tearDown,
+            checker=PolyglotOutputChecker(),
+        ),
+    ))
