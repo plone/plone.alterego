@@ -8,6 +8,6 @@ cache:
   directories:
   - eggs
 install:
-- python bootstrap-buildout.py
-- bin/buildout -N -t 3
+- pip install zc.buildout
+- buildout -N -t 3
 script: bin/test
