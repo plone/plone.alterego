@@ -10,7 +10,7 @@ Breaking changes:
 
 New features:
 
-- *add item here*
+- Add compatibility with Python 3. [datakurre]
 
 Bug fixes:
 

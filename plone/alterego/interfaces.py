@@ -1,8 +1,10 @@
 from zope.interface import Interface
 
+
 class IDynamicModule(Interface):
     """Marker interface for dynamic modules
     """
+
 
 class IDynamicObjectFactory(Interface):
     """A factory capable of creating objects on the fly.
