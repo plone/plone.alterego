@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import Interface
 
 
@@ -20,7 +21,7 @@ class IDynamicObjectFactory(Interface):
         This will only be called once for each name. __module__ is the module
         that the object will live in, and name is the name of the object
         itself. That is,  the full dotted name of the generated object will be
-        "%s.%s" % (module.__name__, name).
+        "{0}.{1}".format(module.__name__, name).
 
         This function should return a new object, or return None, in which
         case the dynamic module will generate an AttributeError. There is
