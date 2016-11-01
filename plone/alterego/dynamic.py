@@ -22,7 +22,7 @@ class DynamicModule(ModuleType):
         if factory is None:
             raise AttributeError(
                 'Cannot find dynamic object factory for module {0}'.format(
-                self.__name__
+                    self.__name__,
                 )
             )
 

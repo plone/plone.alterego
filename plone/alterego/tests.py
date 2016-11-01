@@ -4,6 +4,7 @@ import sys
 import unittest
 import zope.component.testing
 
+
 SKIP_PYTHON_2 = doctest.register_optionflag('SKIP_PYTHON_2')
 SKIP_PYTHON_3 = doctest.register_optionflag('SKIP_PYTHON_3')
 
