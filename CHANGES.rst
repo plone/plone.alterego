@@ -4,17 +4,9 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-Breaking changes:
-
-- *add item here*
-
 New features:
 
 - Add compatibility with Python 3. [datakurre]
-
-Bug fixes:
-
-- *add item here*
 
 
 1.0.1 (2016-08-11)
