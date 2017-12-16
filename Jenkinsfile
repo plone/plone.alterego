@@ -10,8 +10,6 @@ node {
     }
     stage('Test') {
         sh 'bin/code-analysis'
-    }
-    stage('Deploy') {
-        echo 'Deploying....'
+        archiveArtifacts 'parts/code-analysis/*'
     }
 }
