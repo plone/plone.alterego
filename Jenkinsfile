@@ -3,9 +3,7 @@ node {
 
     stage('Build') {
         echo 'Building'
-        sh 'virtualenv .'
-        sh '. bin/activate'
-        sh 'pip install setuptools==38.2.4 zc.buildout==2.10.0'
+        sh 'virtualenv . && . bin/activate && pip install setuptools==38.2.4 zc.buildout==2.10.0'
     }
     stage('Test') {
         echo 'Building....'
