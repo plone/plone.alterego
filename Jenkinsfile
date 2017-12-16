@@ -4,6 +4,7 @@ node {
     stage('Build') {
         echo 'Building'
         sh 'virtualenv .'
+        sh '. bin/activate'
         sh 'pip install setuptools==38.2.4 zc.buildout==2.10.0'
     }
     stage('Test') {
