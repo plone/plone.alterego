@@ -8,7 +8,7 @@ Changelog
 
 .. towncrier release notes start
 
-1.1.1 (2016-11-09)
+1.1.2 (2018-11-21)
 ------------------
 
 Bug fixes:
