@@ -5,3 +5,6 @@ graft plone
 
 global-exclude *.pyc
 global-exclude *.pyo
+include pyproject.toml
+recursive-exclude news *
+exclude news
