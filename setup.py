@@ -31,7 +31,7 @@ setup(
     keywords='Plone schema interface',
     author='Laurence Rowe',
     author_email='plone-developers@lists.sourceforge.net',
-    url='https://pypi.python.org/plone.alterego',
+    url='https://github.com/plone/plone.alterego',
     license='LGPL',
     packages=find_packages(),
     namespace_packages=['plone'],
