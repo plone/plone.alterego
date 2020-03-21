@@ -20,6 +20,7 @@ setup(
         'Framework :: Plone :: 5.0',
         'Framework :: Plone :: 5.1',
         'Framework :: Plone :: 5.2',
+        'Framework :: Plone :: Core',
         'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
