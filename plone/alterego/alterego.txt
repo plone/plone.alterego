@@ -108,12 +108,7 @@ We could then create an on-demand interface easily:
     >>> interface.alsoProvides(c1, dynamic.ITwo)
     Creating ITwo in plone.alterego.tests.dynamic
 
-    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_3
-    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
-     <InterfaceClass __builtin__.IContent>,
-     <InterfaceClass zope.interface.Interface>]
-
-    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_2
+    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE
     [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
      <InterfaceClass builtins.IContent>,
      <InterfaceClass zope.interface.Interface>]
@@ -124,12 +119,7 @@ objects will be returned each time the module is accessed.
     >>> del dynamic
     >>> del dynamic_module
 
-    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_3
-    [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
-     <InterfaceClass __builtin__.IContent>,
-     <InterfaceClass zope.interface.Interface>]
-
-    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE +SKIP_PYTHON_2
+    >>> list(interface.providedBy(c1).flattened()) # doctest: +NORMALIZE_WHITESPACE
     [<InterfaceClass plone.alterego.tests.dynamic.ITwo>,
      <InterfaceClass builtins.IContent>,
      <InterfaceClass zope.interface.Interface>]
