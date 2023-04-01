@@ -9,18 +9,16 @@ import sys
 
 @implementer(IDynamicModule)
 class DynamicModule(ModuleType):
-    """A module that can create objects on the fly.
-    """
+    """A module that can create objects on the fly."""
 
     def __getattr__(self, name):
-
-        if name == '__path__':
-            raise AttributeError('Dynamic modules do not have __path__')
+        if name == "__path__":
+            raise AttributeError("Dynamic modules do not have __path__")
 
         factory = queryUtility(IDynamicObjectFactory, name=self.__name__)
         if factory is None:
             raise AttributeError(
-                'Cannot find dynamic object factory for module {}'.format(
+                "Cannot find dynamic object factory for module {}".format(
                     self.__name__,
                 )
             )
@@ -28,8 +26,8 @@ class DynamicModule(ModuleType):
         obj = factory(name, self)
         if obj is None:
             raise AttributeError(
-                'Dynamic module factory did not want to create '
-                '{} in {}'.format(name, self.__name__)
+                "Dynamic module factory did not want to create "
+                "{} in {}".format(name, self.__name__)
             )
 
         return obj
@@ -41,4 +39,4 @@ def create(dotted_name):
     return dynamic
 
 
-__all__ = ('create',)
+__all__ = ("create",)
