@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 from zope.interface import Interface
 
 
 class IDynamicModule(Interface):
-    """Marker interface for dynamic modules
-    """
+    """Marker interface for dynamic modules"""
 
 
 class IDynamicObjectFactory(Interface):
