@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from plone.alterego.interfaces import IDynamicModule
 from plone.alterego.interfaces import IDynamicObjectFactory
 from types import ModuleType
@@ -20,7 +21,7 @@ class DynamicModule(ModuleType):
         factory = queryUtility(IDynamicObjectFactory, name=self.__name__)
         if factory is None:
             raise AttributeError(
-                'Cannot find dynamic object factory for module {}'.format(
+                'Cannot find dynamic object factory for module {0}'.format(
                     self.__name__,
                 )
             )
@@ -29,7 +30,7 @@ class DynamicModule(ModuleType):
         if obj is None:
             raise AttributeError(
                 'Dynamic module factory did not want to create '
-                '{} in {}'.format(name, self.__name__)
+                '{0} in {1}'.format(name, self.__name__)
             )
 
         return obj
