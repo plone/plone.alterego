@@ -8,6 +8,17 @@ Changelog
 
 .. towncrier release notes start
 
+1.1.7 (2023-04-15)
+------------------
+
+Bug fixes:
+
+
+- Reverted accidental changes introduced in previous release.
+  The 1.x series are meant to be Plone 5.2 and Python 2.7 compatible.
+  [gforcada] (#1)
+
+
 1.1.6 (2023-04-15)
 ------------------
 
