@@ -45,7 +45,7 @@ arguments:
 
 .. code-block:: python
 
-    >>> from plone.alterego.dynamic import create
+>>> from plone.alterego.dynamic import create
     >>> dynamic = create('plone.alterego.tests.dynamic')
 
 We can now import this module:
